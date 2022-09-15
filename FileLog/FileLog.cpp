@@ -92,10 +92,15 @@ class JsonHandler
 											{"hourly"	,	60 * 60		},
 											{"minutely"	,	60			},
 											{"secondly"	,	1			}	};
-	void Talha()
+	void GetData()
 	{
 		cout << "Enter the frequency: "<<endl;
         cin >> frequency;
+		goto a;
+
+
+
+		a:
         cout << "Enter the max file count: "<<endl;
         cin >> max_file_count;
         cout << "Enter the log type:"<<endl;
@@ -120,7 +125,7 @@ int main()
 	Logger logger;
 	InputHandler inputhandler;
 	
-	jsonhandler.Talha();
+	jsonhandler.GetData();
 	jsonhandler.ReadData(logger);
 
 	while(1)
