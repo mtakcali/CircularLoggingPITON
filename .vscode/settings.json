@@ -1,5 +1,8 @@
 {
   "C_Cpp_Runner.cCompilerPath": "gcc",
+  "cmake.configureSettings": {
+    "CMAKE_TOOLCHAIN_FILE": "C:/src/vcpkg/scripts/buildsystems/vcpkg.cmake"
+  },
   "C_Cpp_Runner.cppCompilerPath": "g++",
   "C_Cpp_Runner.debuggerPath": "gdb",
   "C_Cpp_Runner.cStandard": "",
@@ -114,6 +117,7 @@
     "typeindex": "cpp",
     "typeinfo": "cpp",
     "valarray": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "queue": "cpp"
   }
 }

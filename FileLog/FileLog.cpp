@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <filesystem>
-#include <fstream>
+#include <fstream> 
 #include <string>
 #include <cstring>
 #include <time.h>
@@ -11,7 +11,9 @@
 #include <ctime>
 #include <ratio>
 #include <map>
+#include "json/single_include/nlohmann/json.hpp"
 
+using json = nlohmann::json;
 using namespace std;
 using namespace chrono;
 
@@ -44,12 +46,11 @@ class Logger
 	private:
 		clock_t t_initial=0,t_elapsed=0, t_last_log_time=0;
 	public:
+		
 		int		frequency;
 		int		max_file_count;
 		string			active_file_name;
 		queue<string>	active_file_names;
-	
-
 
 		void log(InputHandler& inputh)
 		{	
@@ -63,6 +64,7 @@ class Logger
 				ptm = localtime(&rawtime);
 				char buffer[80];
 				strftime(buffer, 80, "%Y-%m-%dT%H-%M-%SZ.txt", ptm);
+
 				ofstream myfile;
 				myfile.open(buffer);
 				myfile.close();
@@ -94,19 +96,20 @@ class JsonHandler
 											{"secondly"	,	1			}	};
 	void GetData()
 	{
-		cout << "Enter the frequency: "<<endl;
-        cin >> frequency;
-		goto a;
-
-
-
-		a:
-        cout << "Enter the max file count: "<<endl;
-        cin >> max_file_count;
-        cout << "Enter the log type:"<<endl;
-		cin.clear();
-		cin.sync();
-        getline(cin,log_type);
+		std::ifstream f("config.json");
+		json data = json::parse(f);
+		//frequency = data.front();
+		int i=0;
+		for (json::iterator it = data.begin(); it != data.end(); ++it) 
+		{
+			if(i==0)
+				frequency=*it;
+			if(i==1)
+				log_type=*it;
+			else
+				max_file_count=*it;
+			i++;
+		}
 
 	}
 	void ReadData(Logger& _log)
@@ -114,17 +117,18 @@ class JsonHandler
 		_log.frequency=log_type_to_int[log_type] * frequency;
 		
 		_log.max_file_count=max_file_count + 1;
+
 	}
 
 };
 
-int main()
-{
 
+int main()
+{	
 	JsonHandler jsonhandler;
 	Logger logger;
 	InputHandler inputhandler;
-	
+
 	jsonhandler.GetData();
 	jsonhandler.ReadData(logger);
 

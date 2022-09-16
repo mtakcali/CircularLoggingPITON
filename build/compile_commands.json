@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/talha/source/repos/FileLog/build",
+  "command": "C:/MinGW/bin/g++.exe  @CMakeFiles/FileLog.dir/includes_CXX.rsp -g -o CMakeFiles/FileLog.dir/main.cpp.obj -c C:/Users/talha/source/repos/FileLog/main.cpp",
+  "file": "C:/Users/talha/source/repos/FileLog/main.cpp"
+}
+]

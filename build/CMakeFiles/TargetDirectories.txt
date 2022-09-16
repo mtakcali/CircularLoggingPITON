@@ -1,0 +1,5 @@
+C:/Users/talha/source/repos/FileLog/build/CMakeFiles/FileLog.dir
+C:/Users/talha/source/repos/FileLog/build/CMakeFiles/package.dir
+C:/Users/talha/source/repos/FileLog/build/CMakeFiles/package_source.dir
+C:/Users/talha/source/repos/FileLog/build/CMakeFiles/edit_cache.dir
+C:/Users/talha/source/repos/FileLog/build/CMakeFiles/rebuild_cache.dir
